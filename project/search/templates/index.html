@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Поиск фильмов</title>
+{% endblock %}
+
+{% block body %}
+    <!-- Основной контент -->
+    <div class="col-md-9">
+      <h3 class="text-center text-success mb-4">Поиск фильмов</h3>
+      <!-- Поисковая форма -->
+      <form class="row g-3 mb-3">
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Фильм">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Актер">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" value="Foreign" placeholder="Категория">
+        </div>
+        <div class="col-md-2">
+          <input type="text" class="form-control" value="2024" placeholder="Год">
+        </div>
+        <div class="col-md-1">
+          <button class="btn search-btn w-100">Поиск</button>
+        </div>
+      </form>
+
+      <!-- Таблица результатов -->
+      <table class="table table-bordered table-hover">
+        <thead class="table-success">
+          <tr>
+            <th>Название фильма</th>
+            <th>Описание</th>
+            <th>Год выпуска</th>
+            <th>Жанр</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">INFORMER<br>DOUBLE</a></td>
+            <td>A Action-Packed Display of a Woman And a Dentist who must Redeem a Forensic Psychologist in The Canadian Rockies</td>
+            <td>2024</td>
+            <td>Foreign</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Пагинация -->
+      <nav class="d-flex justify-content-center">
+        <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link">«</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item disabled"><a class="page-link">»</a></li>
+        </ul>
+      </nav>
+    </div>
+{% endblock %}
+
+{% block list %}
+    <hr>
+    <h5>Популярные запросы</h5>
+    <ul class="list-group">
+        {% for q in popular_queries %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ q.search_type }}: <strong>{{ q.search_text }}</strong>
+                <span class="badge bg-secondary">{{ q.search_count }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
