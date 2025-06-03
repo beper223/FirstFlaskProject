@@ -1,10 +1,10 @@
-from flask import render_template, request
+from flask import Blueprint, render_template, request
 from db.db_manager import DatabaseManager
-from . import auth_bp  # Импорт Blueprint из текущего модуля
+# from . import auth_bp  # Импорт Blueprint из текущего модуля
 
 # Создаём Blueprint с именем 'search' и префиксом URL '/search'
 # from flask import Blueprint
-# auth_bp = Blueprint('search', __name__, url_prefix='/search')
+auth_bp = Blueprint('search', __name__)
 
 
 @auth_bp.route('/', methods=['GET'])
@@ -29,6 +29,6 @@ def index():
     return render_template('testindex.html', results=results, popular_queries=popular_queries)
 
 
-@auth_bp.route('/about')
-def about():  # put application's code here
-    return render_template('about.html')
+# @auth_bp.route('/about')
+# def about():  # put application's code here
+#     return render_template('about.html')

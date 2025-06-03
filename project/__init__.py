@@ -1,6 +1,6 @@
 # project/__init__.py
 from flask import Flask
-from .search import auth_bp
+from project.routes import auth_bp
 #from .blog import blog_bp
 
 
