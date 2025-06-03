@@ -11,7 +11,7 @@
 # project/app.py
 from project import create_app
 
-app = create_app()
+app1 = create_app()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app1.run(debug=True)

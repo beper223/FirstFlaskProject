@@ -4,10 +4,10 @@ from db.db_manager import DatabaseManager
 
 # Создаём Blueprint с именем 'search' и префиксом URL '/search'
 # from flask import Blueprint
-auth_bp = Blueprint('search', __name__)
+main = Blueprint('main', __name__)
 
 
-@auth_bp.route('/', methods=['GET'])
+@main.route('/', methods=['GET'])
 def index():
     film = request.args.get('film', '').strip()
     actor = request.args.get('actor', '').strip()
@@ -26,9 +26,9 @@ def index():
         results = db.get_movies(film,actor,category,year)
         popular_queries = db.get_popular_queries()
 
-    return render_template('testindex.html', results=results, popular_queries=popular_queries)
+    return render_template('index.html', results=results, popular_queries=popular_queries)
 
 
-# @auth_bp.route('/about')
-# def about():  # put application's code here
-#     return render_template('about.html')
+@main.route('/about')
+def about():  # put application's code here
+    return render_template('about.html')
